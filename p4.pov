@@ -24,7 +24,7 @@ global_settings{ assumed_gamma 1.0 }
 
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
-#declare Camera_Number = 2 ;
+#declare Camera_Number = 3 ;
 //-------------------------------------------------------------------------------------------------------<<<<
 //------------------------------------------------------------- Camera_Position, Camera_look_at, Camera_Angle
 #switch ( Camera_Number )
@@ -36,6 +36,11 @@ global_settings{ assumed_gamma 1.0 }
 #case (1)
   #declare Camera_Position = < 5.00, 5.00, -5.00> ;  // front view
   #declare Camera_Look_At  = < 0.00, 1.00,  0.00> ;
+  #declare Camera_Angle    =  45 ;
+#break
+#case (2)
+  #declare Camera_Position = < 5.00, 1.85, 15.00> ;  // front view
+  #declare Camera_Look_At  = < 0.00, 1.2,  0.00> ;
   #declare Camera_Angle    =  45 ;
 #break
 #else
@@ -64,7 +69,7 @@ plane { <0,1,0>, 0
     } 
 } // end of plane
      
-light_source{ <2,10,-2.5> color White}
+light_source{ <2,20,-2.5> color White}
 
 //---------------------------------------------------------------------------
 //---------------------------- objects in scene ----------------------------
@@ -151,3 +156,16 @@ union {
     scale <1.25, 1.5,1.25>
     translate<0.2, 0, 0.7>  
 }
+
+cylinder{ <0,0,0>,<0,2,0>,0.2 
+    texture{ pigment { color (2*Orange+Goldenrod)/4 } 
+        // normal { bumps 0.5 scale 0.05 } 
+        // finish { phong 1 }
+    } // end of texture ---------------------------  
+    scale <20,5,1> rotate<0,100,0> translate<6,0,-3>
+} // end of cylinder  ----------------------------------
+
+cylinder{ <0,0,0>,<0,2,0>,0.2 
+    texture{ pigment { color (2*Orange+Goldenrod)/4 }}
+    scale <40,5,1> rotate<0,100,0> translate<-8,0,-1.25>
+} // end of cylinder  ------------------------------------
