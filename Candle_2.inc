@@ -19,12 +19,12 @@
 #declare Candle_Wax_Liquid_Texture = 
 	texture{ 
 		pigment{ color White }
-				//normal { bumps 0.15 scale <0.05,0.1,0.05>*2} 
-				//finish { reflection {0.2}}
-		} // end texture
+            normal { spotted 5 scale 0.05 }
+            finish { phong 1 phong_size 10 reflection{ 0.15} }
+        } // end of texture
+
 
 #local C__Candle =
-
 union{ 
 	difference{
 		
