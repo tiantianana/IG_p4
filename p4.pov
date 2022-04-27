@@ -80,10 +80,10 @@ texture  {
     pigment { 
         image_map  {
             jpeg "assets/cooper.jpeg"
-            map_type 2
+            map_type 1
         }
     }
-    finish { reflection {0.45}}
+    finish { reflection {0.4}}
 }
 
 #declare Candle_Texture_Silver = 
@@ -94,7 +94,7 @@ texture  {
             map_type 2
         }
     }
-    finish { reflection {0.45}}
+    finish { reflection {0.4}}
 }
 #declare Candle_Texture_Gold = 
 texture  {
@@ -104,7 +104,7 @@ texture  {
             map_type 2
         }
     }
-    finish { reflection {0.5}}
+    finish { reflection {0.2}}
 }
 
 # declare candle1 = 
@@ -162,12 +162,12 @@ cylinder{ <0,0,0>,<0,2,0>,0.2
         pigment{ color White }
         finish { ambient 0.8 diffuse 0.6 phong 1 }
     } // end of texture
-    scale <20,5,1> rotate<0,100,0> translate<6,0,-3>
+    scale <20,5,1> rotate<0,120,0> translate<6,0,-3>
 } // end of cylinder  ----------------------------------
 
 cylinder{ <0,0,0>,<0,2,0>,0.2 
     texture{ 
         T_Copper_3A
         finish { ambient 0.8 diffuse 0.6 phong 1 } }
-    scale <40,5,1> rotate<0,100,0> translate<-8,0,-1.25>
+    scale <40,5,1> rotate<0,100,0> translate<-7,0,-1.25>
 } // end of cylinder  ------------------------------------
