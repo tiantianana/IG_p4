@@ -63,7 +63,7 @@ union{
 		cylinder{<0,-0.05,0>,<0,0.1,0>,0.1-C__Scale/5 pigment{rgb 1}}
 		cylinder{<0, 0.1,0>,<0,0.3,0>,0.1-C__Scale/5 pigment{rgb 0}}
 		scale C__Scale
-		translate<0,C__Height-0.05,0>
+		translate<0.025,C__Height-0.03,-0.2>
 	} // end wick
 
 } // end C__Candle
@@ -76,7 +76,7 @@ union{
   // Flame
   object { 
 	flame translate<0,0.5,0> scale 0.75
-	scale C__Scale  translate <0,C__Height+C__Scale/5,0> 
+	scale C__Scale  translate <0.025,C__Height+C__Scale/5,-0.2> 
   }
   
   // Shining of the flame
