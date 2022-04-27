@@ -39,9 +39,9 @@ global_settings{ assumed_gamma 1.0 }
   #declare Camera_Angle    =  45 ;
 #break
 #else
-  #declare Camera_Position = < 0.00, 1.10, -4.00> ;// front view
-  #declare Camera_Look_At  = < 0.00, 1.00,  0.00> ;
-  #declare Camera_Angle    =  45 ;
+  #declare Camera_Position = < 1.50, 1.25, -4.00> ;// front view
+  #declare Camera_Look_At  = < 1.00, 1.2,  0.00> ;
+  #declare Camera_Angle    =  40 ;
 #break
 #end // of "#switch ( Camera_Number )" -----------------------------
 //---------------------------------------------------------------------
@@ -111,7 +111,7 @@ object{
                 4, // Fade_Power //   2,3,4
                 Candle_Texture_Cooper
     ) // -------------------------
-    translate <-0.7,0,-0.7>  
+    translate <0,0,0>  
 } 
 
 #declare candle2 = 
@@ -123,19 +123,19 @@ object{
                 4, // Fade_Power //   2,3,4
                 Candle_Texture_Silver
     ) // -------------------------
-    translate <0.5,0,-0.4>  
+    translate <1.2,0,0.5>  
 } 
 
 #declare candle3 = 
 object{ 
     Candle_2( 0.05,  // Shining_On, 0= off, >0 = intensity of candle light 
-                0.6,  // Candle_Height, relative to diameter (d=1) 
+                0.65,  // Candle_Height, relative to diameter (d=1) 
                 0.2   // Candle_Flame_Scale
                 5, // Fade_Distance, //  3 ~ 5    
                 4, // Fade_Power //   2,3,4
                 Candle_Texture_Gold
     ) // -------------------------
-    translate<-0.2,0,0.6>  
+    translate<0.25,0,1.2>  
 } 
 
 union {
@@ -148,6 +148,6 @@ union {
     object {
         candle3
     }
-    scale <1,1.1,1>
+    scale <0.95,1.1,1>
     translate<0.2, 0, 0>  
 }
