@@ -154,7 +154,7 @@ union {
         candle3
     }
     scale <1.35, 1.5,1.25>
-    translate<0.2, 0, 0.7>  
+    translate<0.12, 0, 0.7>  
 }
 
 cylinder{ <0,0,0>,<0,2,0>,0.2 
