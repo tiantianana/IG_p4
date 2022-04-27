@@ -24,24 +24,34 @@ global_settings{ assumed_gamma 1.0 }
 
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
-#declare Camera_0 = camera {//perspective angle 45               // front view
-                            location  <0.0 , 1.5 ,-4.5>
-                            right     x*image_width/image_height
-                            look_at   <0.0 , 1 , 0.0>
-                            angle 42}
-#declare Camera_1 = camera {/*ultra_wide_angle*/ angle 90   // diagonal view
-                            location  <2.0 , 2.5 ,-3.0>
-                            right     x*image_width/image_height
-                            look_at   <0.0 , 1.0 , 0.0>}
-#declare Camera_2 = camera {/*ultra_wide_angle*/ angle 90  //right side view
-                            location  <3.0 , 1.0 , 0.0>
-                            right     x*image_width/image_height
-                            look_at   <0.0 , 1.0 , 0.0>}
-#declare Camera_3 = camera {/*ultra_wide_angle*/ angle 90        // top view
-                            location  <0.0 , 3.0 ,-0.001>
-                            right     x*image_width/image_height
-                            look_at   <0.0 , 1.0 , 0.0>}
-camera{Camera_0}
+#declare Camera_Number = 2 ;
+//-------------------------------------------------------------------------------------------------------<<<<
+//------------------------------------------------------------- Camera_Position, Camera_look_at, Camera_Angle
+#switch ( Camera_Number )
+#case (0)
+  #declare Camera_Position = < 0.00, 1.00, -5.00> ;  // front view
+  #declare Camera_Look_At  = < 0.00, 1.00,  0.00> ;
+  #declare Camera_Angle    =  65 ;
+#break
+#case (1)
+  #declare Camera_Position = < 5.00, 5.00, -5.00> ;  // front view
+  #declare Camera_Look_At  = < 0.00, 1.00,  0.00> ;
+  #declare Camera_Angle    =  45 ;
+#break
+#else
+  #declare Camera_Position = < 0.00, 1.10, -4.00> ;// front view
+  #declare Camera_Look_At  = < 0.00, 1.00,  0.00> ;
+  #declare Camera_Angle    =  45 ;
+#break
+#end // of "#switch ( Camera_Number )" -----------------------------
+//---------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------<<<<
+camera { location Camera_Position
+        right    x*image_width/image_height
+        angle    Camera_Angle
+        look_at  Camera_Look_At
+}
+
 // sun ----------------------------------------------------------------------
 // light_source{<-2000,3000,-3000> color White}
 // sky ----------------------------------------------------------------------
@@ -54,37 +64,90 @@ plane { <0,1,0>, 0
     } 
 } // end of plane
      
+light_source{ <2,10,-2.5> color White}
+
 //---------------------------------------------------------------------------
 //---------------------------- objects in scene ----------------------------
 //---------------------------------------------------------------------------
 
-// sphere { <0,0,0>, 0.5 
-//     texture {  
-//         pigment{ 
-//             color  rgb< 0.8, 0.0, 0.0>}
-//             finish {reflection {0.40 metallic 0.5}}
-//     } // end of texture 
-//     scale<1,1,1>  rotate<0,0,0>  translate<-0.9,0.5 ,-0.8>  
-// }  // end of sphere ----------------------------------- 
-   
-// sphere { <0,0,0>, 0.35 
-//     texture {  
-//         pigment{ color  rgb< 1,1,1> }
-//         finish { reflection {0.10 metallic }}
-//     } // end of texture 
-//     scale<1,1,1>  rotate<0,0,0>  translate<0.8,0.35 ,-1>  
-// }  // end of sphere ----------------------------------- 
+#declare Candle_Texture_Cooper = 
+texture  {
+    pigment { 
+        image_map  {
+            jpeg "assets/cooper.jpeg"
+            map_type 2
+        }
+    }
+    finish { reflection {0.5}}
+}
 
+#declare Candle_Texture_Silver = 
+texture  {
+    pigment { 
+        image_map  {
+            jpeg "assets/silver.jpeg"
+            map_type 2
+        }
+    }
+    finish { reflection {0.5}}
+}
+#declare Candle_Texture_Gold = 
+texture  {
+    pigment { 
+        image_map  {
+            jpeg "assets/gold.jpeg"
+            map_type 2
+        }
+    }
+    finish { reflection {0.5}}
+}
 
+# declare candle1 = 
 object{ 
-    Candle_2( 0.5,  // Shining_On, 0= off, >0 = intensity of candle light 
-                0, //  Flame_Shadow, // >0 = intensity ; 0 = off
+    Candle_2( 0.05,  // Shining_On, 0= off, >0 = intensity of candle light 
                 0.6,  // Candle_Height, relative to diameter (d=1) 
-                1.5,  // Candle_Intensity,  
-                0.4   // Candle_Flame_Scale
+                0.3   // Candle_Flame_Scale
                 5, // Fade_Distance, //  3 ~ 5    
-                4 // Fade_Power //   2,3,4
+                4, // Fade_Power //   2,3,4
+                Candle_Texture_Cooper
     ) // -------------------------
-    rotate<0,0,0>
-    translate<-0.8,0,-0.7>  
+    translate <-0.7,0,-0.7>  
 } 
+
+#declare candle2 = 
+object{ 
+    Candle_2( 0.05,  // Shining_On, 0= off, >0 = intensity of candle light 
+                0.6,  // Candle_Height, relative to diameter (d=1) 
+                0.25   // Candle_Flame_Scale
+                5, // Fade_Distance, //  3 ~ 5    
+                4, // Fade_Power //   2,3,4
+                Candle_Texture_Silver
+    ) // -------------------------
+    translate <0.5,0,-0.4>  
+} 
+
+#declare candle3 = 
+object{ 
+    Candle_2( 0.05,  // Shining_On, 0= off, >0 = intensity of candle light 
+                0.6,  // Candle_Height, relative to diameter (d=1) 
+                0.2   // Candle_Flame_Scale
+                5, // Fade_Distance, //  3 ~ 5    
+                4, // Fade_Power //   2,3,4
+                Candle_Texture_Gold
+    ) // -------------------------
+    translate<-0.2,0,0.6>  
+} 
+
+union {
+    object {
+        candle1
+    }
+    object {
+        candle2
+    }
+    object {
+        candle3
+    }
+    scale <1,1.1,1>
+    translate<0.2, 0, 0>  
+}

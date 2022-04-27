@@ -32,7 +32,7 @@ ovus
             //absorption 4
             density
             {
-                spherical scale 2
+                spherical scale 1.65
                 translate -1.5*y
                 color_map
                 {
@@ -47,7 +47,7 @@ ovus
         }
     }
 
-    scale <0.8, 1.8, 0>
+    scale <0.8, 1.6, 0>
     scale 1/(1.3*1.5)
     rotate <0,0,2>
 
