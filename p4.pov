@@ -158,14 +158,16 @@ union {
 }
 
 cylinder{ <0,0,0>,<0,2,0>,0.2 
-    texture{ pigment { color (2*Orange+Goldenrod)/4 } 
-        // normal { bumps 0.5 scale 0.05 } 
-        // finish { phong 1 }
-    } // end of texture ---------------------------  
+    texture{ 
+        pigment{ color White }
+        finish { ambient 0.8 diffuse 0.2 phong 1 }
+    } // end of texture
     scale <20,5,1> rotate<0,100,0> translate<6,0,-3>
 } // end of cylinder  ----------------------------------
 
 cylinder{ <0,0,0>,<0,2,0>,0.2 
-    texture{ pigment { color (2*Orange+Goldenrod)/4 }}
+    texture{ 
+        pigment { color (2*Orange+Goldenrod)/4 }
+        finish { ambient 0.8 diffuse 0.2 phong 1 } }
     scale <40,5,1> rotate<0,100,0> translate<-8,0,-1.25>
 } // end of cylinder  ------------------------------------
