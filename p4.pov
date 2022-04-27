@@ -122,7 +122,7 @@ object{
 #declare candle2 = 
 object{ 
     Candle_2( 0.05,  // Shining_On, 0= off, >0 = intensity of candle light 
-                0.6,  // Candle_Height, relative to diameter (d=1) 
+                0.625,  // Candle_Height, relative to diameter (d=1) 
                 0.25   // Candle_Flame_Scale
                 5, // Fade_Distance, //  3 ~ 5    
                 4, // Fade_Power //   2,3,4
@@ -140,7 +140,7 @@ object{
                 4, // Fade_Power //   2,3,4
                 Candle_Texture_Gold
     ) // -------------------------
-    translate<0.25,0,1.2>  
+    translate<0.28,0,1.2>  
 } 
 
 union {
@@ -153,7 +153,7 @@ union {
     object {
         candle3
     }
-    scale <1.25, 1.5,1.25>
+    scale <1.35, 1.5,1.25>
     translate<0.2, 0, 0.7>  
 }
 
@@ -167,7 +167,7 @@ cylinder{ <0,0,0>,<0,2,0>,0.2
 
 cylinder{ <0,0,0>,<0,2,0>,0.2 
     texture{ 
-        pigment { color (2*Orange+Goldenrod)/4 }
+        T_Copper_3A
         finish { ambient 0.8 diffuse 0.6 phong 1 } }
     scale <40,5,1> rotate<0,100,0> translate<-8,0,-1.25>
 } // end of cylinder  ------------------------------------
